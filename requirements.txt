@@ -1,0 +1,8 @@
+ultralytics
+segmentation-models-pytorch
+torch
+torchvision
+albumentations
+opencv-python
+matplotlib
+numpy

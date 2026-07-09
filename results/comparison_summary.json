@@ -1,0 +1,24 @@
+{
+  "yolo11s_seg": {
+    "mAP_based": {
+      "box_map50_95": 0.3575,
+      "mask_map50_95": 0.2621
+    },
+    "pixel_iou_semantic_collapsed": {
+      "Animal": 0.3245,
+      "Waste": 0.5668,
+      "Person": 0.4403,
+      "mean_iou_excl_bg": 0.4439
+    }
+  },
+  "unet_resnet34": {
+    "pixel_iou": {
+      "background": 0.9777,
+      "Animal": 0.0529,
+      "Waste": 0.6483,
+      "Person": 0.3349,
+      "mean_iou_excl_bg": 0.3454
+    }
+  },
+  "conclusion": "YOLO11s-seg outperforms UNet-ResNet34 overall on pixel-wise IoU (0.444 vs 0.345), particularly on the Animal class where UNet suffered from severe pixel-level class imbalance (Animal = 0.07% of total pixels). UNet slightly outperformed YOLO on Waste, likely due to Waste having larger, denser pixel coverage well-suited to per-pixel classification."
+}

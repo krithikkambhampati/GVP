@@ -1,0 +1,17 @@
+{
+  "model": "unet_resnet34",
+  "epochs_run": 21,
+  "final_val_miou": 0.6581972134161872,
+  "test_iou_per_class": {
+    "background": 0.977691042639368,
+    "Animal": 0.05294681622651577,
+    "Waste": 0.6483184485203073,
+    "Person": 0.33491952004777886
+  },
+  "test_mean_iou_excl_bg": 0.34539492826486734,
+  "classes": {
+    "0": "Animal",
+    "1": "Waste",
+    "2": "Person"
+  }
+}
