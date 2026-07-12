@@ -109,4 +109,4 @@ Frontend will run at `http://localhost:5173`. Open that in your browser.
 
 - First request after starting the backend may be slower (model warm-up).
 - If you get a CUDA error and don't have a GPU locally, the backend automatically falls back to CPU (inference will just be slower).
-- CORS is configured for `localhost:5173` and `localhost:3000` only — update `main.py` if you serve the frontend elsewhere.
+- CORS is configured for `localhost:5173` and `localhost:3000` only — update `main.py` if you serve the frontend elsewhere.   
