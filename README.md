@@ -58,3 +58,55 @@ pip install -r requirements.txt
 Notebooks are designed for Google Colab (GPU runtime) with dataset mounted from Google Drive.
 
 
+# Garbage Segmentation Demo App
+
+Upload an image, run it through your trained YOLO11s-seg or UNet (ResNet34) model, and view/download the segmentation overlay.
+
+## Setup
+
+### 1. Add your trained model weights
+
+Copy your trained weights into the backend models folder:
+
+```
+backend/models/best_yolo.pt   <- from garbage_runs/seg_v1/weights/best.pt
+backend/models/best_unet.pt   <- from garbage_runs/unet_v1/best_unet.pt
+```
+
+### 2. Backend (FastAPI)
+
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate      # on Windows: venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+
+Backend will run at `http://localhost:8000`. Check it's alive at `http://localhost:8000/` — should return `{"status": "ok"}`.
+
+### 3. Frontend (React + Vite)
+
+In a separate terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend will run at `http://localhost:5173`. Open that in your browser.
+
+## Usage
+
+1. Upload an image
+2. Select YOLO11s-seg or UNet (ResNet34)
+3. Click Predict
+4. View the overlay (red = Animal, green = Waste, blue = Person) and per-class pixel percentage
+5. Click Download to save the result image
+
+## Notes
+
+- First request after starting the backend may be slower (model warm-up).
+- If you get a CUDA error and don't have a GPU locally, the backend automatically falls back to CPU (inference will just be slower).
+- CORS is configured for `localhost:5173` and `localhost:3000` only — update `main.py` if you serve the frontend elsewhere.
